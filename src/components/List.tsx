@@ -44,10 +44,12 @@ class List extends React.Component<{}, any> {
         const {visibleProducts} = this.state;
 
         const tiles = visibleProducts.map((product: any) =>
-            <ListItem
-                key={product.id}
-                product={product}
-                handleOpenModal={this.openModal.bind(product)}/>);
+            <div key={product.id} onClick={this.openModal.bind(this, product)}>
+                <ListItem
+                    key={product.id}
+                    product={product}
+                    handleOpenModal={this.openModal}/>
+            </div>);
 
         return (
             <>

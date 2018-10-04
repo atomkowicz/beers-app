@@ -11,6 +11,7 @@ class ListItem extends React.Component<any, any> {
 
 
     public render() {
+
         return (
             <div className="Tile" onClick={this.props.handleOpenModal.bind(this, this.props.product)}>
                 {this.props.product && <div className="Tile__inner">
