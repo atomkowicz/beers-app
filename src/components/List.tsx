@@ -1,8 +1,10 @@
 import * as React from 'react';
 // import {Link} from 'react-router-dom';
-import {getPosts} from '../api/api';
+import {getBiers} from '../api/api';
+
 import '../assests/scss/index.css';
 import Tile from './Tile';
+
 
 class List extends React.Component<{}, any> {
 
@@ -15,7 +17,7 @@ class List extends React.Component<{}, any> {
     }
 
     public componentDidMount() {
-        getPosts()
+        getBiers()
             .then((posts: any) => {
                 this.setState({visiblePosts: posts});
             })

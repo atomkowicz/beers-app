@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { getPost } from '../api/api';
+// @ts-ignore
+import { getBier } from '../api/api';
 // import * as Modal from 'react-modal';
 // import { Link } from 'react-router-dom';
 
@@ -18,7 +19,7 @@ class ListItem extends React.Component<any, any> {
     public componentDidMount() {
         const { id } = this.props.match.params;
 
-        getPost(id).then(post => {
+        getBier(id).then(post => {
             this.setState({
                 isFetched: true,
                 post
