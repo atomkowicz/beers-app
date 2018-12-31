@@ -1,71 +1,98 @@
 import * as React from 'react';
+import * as InfiniteScroll from 'react-infinite-scroller';
 import * as Modal from "react-modal";
 import '../assests/scss/index.css';
 import * as API from '../utils/API';
-import ListItem from './ListItem';
+import {BEERS_PER_PAGE} from "../utils/Consts";
+import {modalStyle} from '../utils/Styles';
+import {ListItem} from './ListItem';
+import {ItemDetails} from "./ItemDetails";
+import Loader from "./Loader";
+import { IBeer } from '../utils/API';
 
+interface IListState {
+    query: string,
+    showModal: boolean,
+    visibleProducts: IBeer[],
+    currentPage: number,
+    hasMore: boolean,
+    modalProduct?: IBeer
+}
 
-class List extends React.Component<{}, any> {
+class List extends React.Component<{}, IListState> {
 
     constructor(props: any) {
         super(props);
         this.state = {
-            product: "",
+            currentPage: 1,
+            hasMore: true,
             query: "",
             showModal: false,
             visibleProducts: []
-        }
-
-        this.openModal = this.openModal.bind(this, this.state.product);
-        this.closeModal = this.closeModal.bind(this);
+        };
     }
 
-    public closeModal() {
+    closeModal = () => {
         this.setState({showModal: false});
-    }
+    };
 
-    public openModal(product: any) {
-
+    openModal = (productId: number) => {
         this.setState({
-            product,
+            modalProduct: this.state.visibleProducts.find((product) =>
+                product.id === productId),
             showModal: true,
         });
-    }
+    };
 
-    public componentDidMount() {
-        API.fetchProducts()
+    loadMoreItems = () => {
+        const {currentPage} = this.state;
+
+        API.fetchProducts(currentPage)
             .then((products: any) => {
-                this.setState({visibleProducts: products});
-            })
-    }
+                this.setState((prevState: any) => ({
+                    currentPage: prevState.currentPage + 1,
+                    hasMore: products.length === BEERS_PER_PAGE,
+                    visibleProducts: [...prevState.visibleProducts, ...products]
+                }));
+            }).catch(e => console.log(e))
+    };
 
+    render() {
+        const {visibleProducts, hasMore, modalProduct} = this.state;
 
-    public render() {
-        const {visibleProducts} = this.state;
-
-        const tiles = visibleProducts.map((product: any) =>
-            <div key={product.id} onClick={this.openModal.bind(this, product)}>
-                <ListItem
-                    key={product.id}
-                    product={product}
-                    handleOpenModal={this.openModal}/>
-            </div>);
+        const tiles = visibleProducts.map((product: IBeer) =>
+            <ListItem
+                key={product.id}
+                onClick={this.openModal.bind(this, product.id)}
+                product={product}
+                additionalStyle={"big"}
+            />
+        );
 
         return (
             <>
                 <div className="TileList">
-                    {tiles.length > 0
-                        ? <div className="Tile__container">{tiles}</div>
-                        : <div> loading ...</div>}
-
+                    <div className="Tile__container">
+                        <InfiniteScroll
+                            pageStart={0}
+                            loadMore={this.loadMoreItems}
+                            hasMore={hasMore}
+                            loader={<Loader key={0}/>}>
+                            {tiles}
+                        </InfiniteScroll>
+                    </div>
+                    {!hasMore && <div className="text-center">You've reached end of the list...</div>}
                 </div>
-                <Modal
+
+                {modalProduct && <Modal
+                    ariaHideApp={false}
                     isOpen={this.state.showModal}
                     onRequestClose={this.closeModal}
+                    style={modalStyle}
                     contentLabel="Product">
-                    <div onClick={this.closeModal}>close</div>
-                    <div>{this.state.product}</div>
-                </Modal>
+                    <div className="btn-close" onClick={this.closeModal}>x</div>
+                    <ItemDetails product={modalProduct}/>
+                </Modal>}
             </>
         );
     }

@@ -3,12 +3,11 @@ import {Route, Switch} from 'react-router-dom';
 import '../assests/scss/index.css';
 import Header from "./Header";
 import List from './List';
-import ProductDetails from './ProductDetails';
+import ItemDetailsContainer from "./ItemDetailsContainer";
 
-class App extends React.Component<any, any> {
+class App extends React.Component {
 
-    public render() {
-
+    render() {
         return (
             <div className="App">
                 <div className="container">
@@ -17,11 +16,9 @@ class App extends React.Component<any, any> {
                         <Route exact={true}
                                path="/"
                                component={List}/>
-
                         <Route exact={true}
                                path="/details/:id"
-                               component={ProductDetails}/>
-
+                               component={ItemDetailsContainer}/>
                     </Switch>
                 </div>
             </div>

@@ -1,29 +1,14 @@
 import * as React from 'react';
-import * as Modal from 'react-modal';
+import { IBeer } from '../utils/API';
 
-Modal.setAppElement('#root');
-
-class ListItem extends React.Component<any, any> {
-
-    constructor(props: any) {
-        super(props);
-    }
-
-
-    public render() {
-
-        return (
-            <div className="Tile" onClick={this.props.handleOpenModal.bind(this, this.props.product)}>
-                {this.props.product && <div className="Tile__inner">
+export const ListItem = (props: { product: IBeer; onClick?: () => void; additionalStyle?: string }) =>
+            <div className={`Tile ${props.additionalStyle}`} onClick={props.onClick}>
+                {props.product && <div className={`Tile__inner ${props.additionalStyle}`}>
                     <div className="Tile__body">
-                        <img className="Tile__image" src={this.props.product.image_url} alt="product"/>
+                        <img className={`Tile__image ${props.additionalStyle}`} src={props.product.image_url} alt="product"/>
                     </div>
-                    <div className="Tile__title">{this.props.product.name}</div>
-                    <div className="Tile__subtitle">{this.props.product.tagline}</div>
+                    <div className="Tile__title">{props.product.name}</div>
+                    <div className="Tile__subtitle">{props.product.tagline}</div>
                 </div>}
             </div>
-        )
-    }
-}
 
-export default ListItem;
