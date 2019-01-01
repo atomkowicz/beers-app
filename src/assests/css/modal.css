@@ -1,0 +1,26 @@
+.ReactModalPortal > * {
+
+    opacity: 0;
+}
+
+.ReactModal__Overlay {
+    transition: opacity 200ms ease-in-out;
+    background: rgba(0, 0, 0, 0.15);
+
+}
+
+.ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+    opacity: 0;
+}
+
+.loader-container {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    overflow: hidden;
+    margin: 90px auto;
+}

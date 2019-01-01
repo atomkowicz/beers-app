@@ -1,0 +1,13 @@
+
+.TileList {
+    width: 100%;
+    margin: 20px 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-flow: column;
+}
+
+.TileList.small {
+    margin: 0;
+}

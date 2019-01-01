@@ -1,5 +1,6 @@
 import * as React from 'react';
 import logo from '../assests/img/bier-guru-logo.png';
+import '../assests/css/header.css';
 import {Link} from "react-router-dom";
 
 const Header = () => {

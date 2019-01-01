@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {Route, Switch} from 'react-router-dom';
-import '../assests/scss/index.css';
-import Header from "./Header";
+import '../assests/css/index.css';
+import '../assests/css/modal.css';
+import Header from  "./Header";
 import List from './List';
 import ItemDetailsContainer from "./ItemDetailsContainer";
 

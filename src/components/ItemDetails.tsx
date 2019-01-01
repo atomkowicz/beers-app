@@ -1,5 +1,6 @@
 import * as React from 'react';
 import SimilarItems from "./SimilarItems";
+import '../assests/css/product.css';
 import {Link} from "react-router-dom";
 import { IBeer } from '../utils/API';
 

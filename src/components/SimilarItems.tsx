@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../assests/scss/index.css';
+import '../assests/css/index.css';
 import * as API from "../utils/API";
 import {ListItem} from './ListItem';
 import Loader from "./Loader";

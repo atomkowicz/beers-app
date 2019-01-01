@@ -1,0 +1,9 @@
+.Header {
+    padding: 15px 0;
+}
+
+@media screen and (min-width: 1240px) {
+    .Header {
+        padding: 55px 0;
+    }
+}

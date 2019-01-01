@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as InfiniteScroll from 'react-infinite-scroller';
 import * as Modal from "react-modal";
-import '../assests/scss/index.css';
+import '../assests/css/tileList.css';
+import '../assests/css/modal.css';
 import * as API from '../utils/API';
 import {BEERS_PER_PAGE} from "../utils/Consts";
 import {modalStyle} from '../utils/Styles';

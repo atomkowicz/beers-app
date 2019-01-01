@@ -1,4 +1,5 @@
 import * as React from 'react';
+import '../assests/css/listItem.css';
 import { IBeer } from '../utils/API';
 
 export const ListItem = (props: { product: IBeer; onClick?: () => void; additionalStyle?: string }) =>
