@@ -5,13 +5,14 @@ import '../assests/css/modal.css';
 import Header from  "./Header";
 import List from './List';
 import ItemDetailsContainer from "./ItemDetailsContainer";
+import Layout from './Layout';
 
 class App extends React.Component {
 
     render() {
         return (
             <div className="App">
-                <div className="container">
+                <Layout>
                     <Header/>
                     <Switch>
                         <Route exact={true}
@@ -21,7 +22,7 @@ class App extends React.Component {
                                path="/details/:id"
                                component={ItemDetailsContainer}/>
                     </Switch>
-                </div>
+                </Layout>
             </div>
         );
     }
