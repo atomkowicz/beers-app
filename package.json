@@ -13,7 +13,7 @@
     "react-infinite-scroller": "^1.2.1",
     "react-modal": "^3.6.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts-ts": "3.1.0",
+    "react-scripts-ts": "^4.0.8",
     "react-test-renderer": "^16.5.2"
   },
   "scripts": {
@@ -32,5 +32,16 @@
     "enzyme": "^3.5.1",
     "enzyme-adapter-react-16": "^1.3.1",
     "typescript": "^3.1.1"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/src/setupTests.js"
+    ]
   }
 }
