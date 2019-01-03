@@ -1,10 +1,10 @@
 import * as React from 'react';
+import {Link} from "react-router-dom";
 import '../assests/css/index.css';
 import * as API from "../utils/API";
+import {IBeer} from "../utils/API";
 import {ListItem} from './ListItem';
 import Loader from "./Loader";
-import {Link} from "react-router-dom";
-import {IBeer} from "../utils/API";
 
 interface ISimilarItemsState {isFetching: boolean; products: IBeer[]}
 
@@ -22,7 +22,7 @@ class SimilarItems extends React.Component<any, ISimilarItemsState> {
         try {
             const similar = await API.fetchSimilarProducts(this.props.product);
             this.setState({isFetching: false, products: similar})
-        } catch (e) { console.log(e) }
+        } catch (e) { alert(e) }
     }
 
     public render() {

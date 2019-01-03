@@ -1,8 +1,8 @@
 import * as React from "react";
-import {ItemDetails} from "./ItemDetails";
 import * as API from "../utils/API";
-import Loader from "./Loader";
 import {IBeer} from "../utils/API";
+import {ItemDetails} from "./ItemDetails";
+import Loader from "./Loader";
 
 class ItemDetailsContainer extends React.Component<any, { product?: IBeer, isFetching: boolean }> {
 
@@ -13,18 +13,18 @@ class ItemDetailsContainer extends React.Component<any, { product?: IBeer, isFet
         }
     }
 
-    componentDidMount() {
+    public componentDidMount() {
         const {id} = this.props.match.params;
         API.fetchProduct(id)
             .then((product: IBeer) => {
                 this.setState({
+                    isFetching: false,
                     product: product[0],
-                    isFetching: false
                 });
-            }).catch(e => console.log(e))
+            }).catch(e => e)
     }
 
-    render() {
+    public render() {
         const {product, isFetching} = this.state;
 
         return (

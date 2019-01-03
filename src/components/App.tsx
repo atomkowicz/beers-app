@@ -3,13 +3,13 @@ import {Route, Switch} from 'react-router-dom';
 import '../assests/css/index.css';
 import '../assests/css/modal.css';
 import Header from  "./Header";
-import List from './List';
 import ItemDetailsContainer from "./ItemDetailsContainer";
 import Layout from './Layout';
+import List from './List';
 
 class App extends React.Component {
 
-    render() {
+    public render() {
         return (
             <div className="App">
                 <Layout>

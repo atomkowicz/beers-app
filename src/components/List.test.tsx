@@ -1,12 +1,12 @@
 // import * as renderer from 'react-test-renderer';
 import * as API from "../utils/API";
-import {BEERS_PER_PAGE} from "../utils/Consts";
-import {IBeer} from "../utils/API";
+import { IBeer } from "../utils/API";
+import { BEERS_PER_PAGE } from "../utils/Consts";
 
-describe('Async List', function () {
+describe('Async List', () => {
     const currentPage: number = 1;
 
-    let data:IBeer[];
+    let data: IBeer[];
 
     beforeEach(async () => {
         data = await API.fetchProducts(currentPage);

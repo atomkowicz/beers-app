@@ -33,7 +33,7 @@ export const fetchSimilarProducts = async (product: IBeer) => {
         throw Error(response.status.toString());
     }
     const beers = await response.json() as IBeer[];
-    return beers.filter(b => b.id != product.id).slice(0, 3);
+    return beers.filter(b => b.id !== product.id).slice(0, 3);
 };
 
 

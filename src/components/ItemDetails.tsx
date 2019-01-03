@@ -1,8 +1,8 @@
 import * as React from 'react';
-import SimilarItems from "./SimilarItems";
-import '../assests/css/product.css';
 import {Link} from "react-router-dom";
+import '../assests/css/product.css';
 import { IBeer } from '../utils/API';
+import SimilarItems from "./SimilarItems";
 
 export const ItemDetails = (props: { product: IBeer }) => {
         const {

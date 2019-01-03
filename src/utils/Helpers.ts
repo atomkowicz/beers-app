@@ -1,5 +1,5 @@
 const gt = (x: number) => Math.round(x - 10 < 0 ? 0 : x - 10)
-const lt = (x: number) =>  Math.round(x + 10)
+const lt = (x: number) => Math.round(x + 10)
 
 export function similarBierQueryString(abv: number, ibu: number, ebc: number) {
     const params = {
@@ -15,3 +15,7 @@ export function similarBierQueryString(abv: number, ibu: number, ebc: number) {
         .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]))
         .join('&');
 }
+
+export const flushPromises = () => {
+    return new Promise(resolve => setImmediate(resolve));
+};

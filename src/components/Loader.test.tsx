@@ -1,5 +1,5 @@
-import * as renderer from "react-test-renderer";
 import * as React from "react";
+import * as renderer from "react-test-renderer";
 import Loader from "./Loader";
 
 test('loader renders correctly', () => {
